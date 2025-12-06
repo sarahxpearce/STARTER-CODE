@@ -1,23 +1,54 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  ol
-  each val in todos
-    li
-      span= val.task + ' - '
-      if val.completed > 0
-        span Completed
-      else
-        pan Not Completed
-      form(method='POST' action='/delete')
-        input(type='hidden', name='id', value=val.id)
-        button(type='submit') Delete
+  main.container
+    section.hero
+      div.hero-text
+        p.kicker Downtown Donuts
+        h1 Cozy donuts, coffee, and community since 1992
+        p.lede Fresh batches all morning, a warm modern café, and quick links to order your favorites.
+        div.actions
+          each link in orderingLinks
+            a.button.primary(href=link.href, target='_blank')= link.label
+          a.button.secondary(href='/comments') Leave a comment
+      div.hero-card
+        h3 Today at the shop
+        ul.order-list
+          li Fresh donuts every hour until noon
+          li Seasonal flavors rotate weekly
+          li Friendly baristas ready by 6 AM
+        p.card-note Order ahead to skip the line or drop by to say hello.
 
-  hr
-  h2 Add a new task
-  form(method='POST' action='/create')
-    label(for='task') Task:
-    input(type='text', name='task', id='task', required)
-    button(type='submit') Create Task
+    section.tiles
+      h2 Menu highlights
+      p.section-lede A few favorites while you browse the full menu.
+      div.tile-grid
+        each item in menuHighlights
+          div.tile
+            h3= item.name
+            p= item.detail
+        a.tile.cta(href='/menu')
+          h3 View the full menu
+          p Explore donuts, coffee, and seasonal specials
+
+    section.split
+      div
+        p.kicker Our story
+        h2 A neighborhood staple
+        p.lede Family-owned, small-batch baking, and a café built for quiet mornings and lively catch-ups.
+        div.actions
+          a.button.secondary(href='/about') Learn more
+      div.info-card
+        h3 Visit us
+        ul.bullets
+          li 245 Main Street, open daily
+          li Pickup, dine-in, and delivery available
+          li Call ahead for large orders
+          li Seating for small groups and study sessions
+
+    section.callout
+      h2 Join the community wall
+      p Share a favorite donut, a memory, or what you want to see next.
+      div.actions
+        a.button.primary(href='/comments') Post a message
+        a.button.secondary(href='/menu') Grab a dozen
