@@ -35,6 +35,21 @@ const menuSections = [
 ];
 
 const comments = [];
+const todos = [];
+
+router.get('/todos', (req, res) => {
+  res.json(todos);
+});
+
+router.post('/todos', (req, res) => {
+  const title = req.body.title?.trim();
+
+  if (title) {
+    todos.push({ id: Date.now(), title, completed: false });
+  }
+
+  res.json(todos);
+});
 
 router.get('/', (req, res) => {
   res.render('index', {
