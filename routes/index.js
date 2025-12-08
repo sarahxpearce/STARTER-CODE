@@ -9,27 +9,27 @@ const orderingLinks = [
 
 const menuSections = [
   {
-    title: 'Lorem ipsum',
+    title: 'Donuts',
     items: [
-      { name: 'Lorem ipsum', detail: 'Lorem ipsum dolor sit amet' },
-      { name: 'Consectetur elit', detail: 'Sed do eiusmod tempor incididunt' },
-      { name: 'Dolor sit amet', detail: 'Ut labore et dolore magna aliqua' },
+      { name: 'Classic Glazed', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Chocolate Sprinkle', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Maple Bar', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
     ],
   },
   {
-    title: 'Dolor sit amet',
+    title: 'Coffee & Tea',
     items: [
-      { name: 'Lorem ipsum', detail: 'Lorem ipsum dolor sit amet' },
-      { name: 'Consectetur elit', detail: 'Sed do eiusmod tempor incididunt' },
-      { name: 'Dolor sit amet', detail: 'Ut labore et dolore magna aliqua' },
+      { name: 'Drip Coffee', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Vanilla Latte', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Iced Matcha', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
     ],
   },
   {
-    title: 'Consectetur elit',
+    title: 'Seasonal',
     items: [
-      { name: 'Lorem ipsum', detail: 'Lorem ipsum dolor sit amet' },
-      { name: 'Consectetur elit', detail: 'Sed do eiusmod tempor incididunt' },
-      { name: 'Dolor sit amet', detail: 'Ut labore et dolore magna aliqua' },
+      { name: 'Berry Filled', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Pumpkin Spice', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Cinnamon Twist', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
     ],
   },
 ];
@@ -38,7 +38,7 @@ const comments = [];
 
 router.get('/', (req, res) => {
   res.render('index', {
-    title: 'Lorem ipsum',
+    title: 'Downtown Donuts',
     orderingLinks,
     menuHighlights: menuSections[0].items,
   });
