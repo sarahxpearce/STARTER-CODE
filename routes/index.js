@@ -1,56 +1,71 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 
-/* GET home page. */
-router.get('/', function(req, res, next){
-  try {
-    req.db.query('SELECT * FROM todos;', (err, results) => {
-      if (err) {
-        console.error('Error fetching todos:', err);
-        return res.status(500).send('Error fetching todos');
-      }
-      res.render('index', { title: 'My Simple TODO', todos: results });
-    });
-  } catch (error) {
-    console.error('Error fetching items:', error);
-    res.status(500).send('Error fetching items');
+const router = express.Router();
+
+const orderingLinks = [
+  { label: 'Order on UberEats', href: 'https://www.ubereats.com' },
+  { label: 'Order on DoorDash', href: 'https://www.doordash.com' },
+];
+
+const menuSections = [
+  {
+    title: 'Donuts',
+    items: [
+      { name: 'Classic Glazed', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Chocolate Sprinkle', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Maple Bar', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+    ],
+  },
+  {
+    title: 'Coffee & Tea',
+    items: [
+      { name: 'Drip Coffee', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Vanilla Latte', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Iced Matcha', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+    ],
+  },
+  {
+    title: 'Seasonal',
+    items: [
+      { name: 'Berry Filled', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Pumpkin Spice', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+      { name: 'Cinnamon Twist', detail: 'Lorem ipsum lorem ipsum lorem ipsum.' },
+    ],
+  },
+];
+
+const comments = [];
+
+router.get('/', (req, res) => {
+  res.render('index', {
+    title: 'Downtown Donuts',
+    orderingLinks,
+    menuHighlights: menuSections[0].items,
+  });
+});
+
+router.get('/menu', (req, res) => {
+  res.render('menu', { title: 'Menu', orderingLinks, menuSections });
+});
+
+router.get('/about', (req, res) => {
+  res.render('about', { title: 'About' });
+});
+
+router.get('/comments', (req, res) => {
+  res.render('comments', { title: 'Comments', comments });
+});
+
+router.post('/comments', (req, res) => {
+  const name = req.body.name?.trim() || 'Guest';
+  const message = req.body.message?.trim();
+
+  if (message) {
+    const stamp = new Date().toLocaleString();
+    comments.unshift({ name, message, time: stamp });
   }
-});
 
-router.post('/create', function (req, res, next) {
-    const { task } = req.body;
-    try {
-      req.db.query('INSERT INTO todos (task) VALUES (?);', [task], (err, results) => {
-        if (err) {
-          console.error('Error adding todo:', err);
-          return res.status(500).send('Error adding todo');
-        }
-        console.log('Todo added successfully:', results);
-        // Redirect to the home page after adding
-        res.redirect('/');
-      });
-    } catch (error) {
-      console.error('Error adding todo:', error);
-      res.status(500).send('Error adding todo');
-    }
-});
-
-router.post('/delete', function (req, res, next) {
-    const { id } = req.body;
-    try {
-      req.db.query('DELETE FROM todos WHERE id = ?;', [id], (err, results) => {
-        if (err) {
-          console.error('Error deleting todo:', err);
-          return res.status(500).send('Error deleting todo');
-        }
-        console.log('Todo deleted successfully:', results);
-        // Redirect to the home page after deletion
-        res.redirect('/');
-    });
-    }catch (error) {
-        console.error('Error deleting todo:', error);
-        res.status(500).send('Error deleting todo:');
-    }
+  res.redirect('/comments');
 });
 
 module.exports = router;

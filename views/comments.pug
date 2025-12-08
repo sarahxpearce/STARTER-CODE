@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  main.container
+    section.page-head
+      p.kicker Community wall
+      h1 Downtown Donuts community
+      p.lede Lorem ipsum lorem ipsum lorem ipsum.
+    section.comments
+      div.comment-list
+        if comments.length === 0
+          p Lorem ipsum lorem ipsum lorem ipsum.
+        else
+          each entry in comments
+            div.comment
+              div.comment-head
+                span.comment-name= entry.name
+                span.comment-time= entry.time
+              p.comment-body= entry.message
+      div.comment-form
+        h3 Post a message
+        form(method='POST', action='/comments')
+          label(for='name') Name
+          input(type='text', id='name', name='name', required)
+          label(for='message') Message
+          textarea(id='message', name='message', rows='4', required)
+          button.button.primary(type='submit') Submit

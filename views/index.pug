@@ -1,23 +1,54 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  ol
-  each val in todos
-    li
-      span= val.task + ' - '
-      if val.completed > 0
-        span Completed
-      else
-        pan Not Completed
-      form(method='POST' action='/delete')
-        input(type='hidden', name='id', value=val.id)
-        button(type='submit') Delete
+  main.container
+    section.hero
+      div.hero-text
+        p.kicker Downtown Donuts
+        h1 Welcome to Downtown Donuts
+        p.lede Lorem ipsum lorem ipsum lorem ipsum.
+        div.actions
+          each link in orderingLinks
+            a.button.primary(href=link.href, target='_blank')= link.label
+          a.button.secondary(href='/comments') Leave a comment
+      div.hero-card
+        h3 Order online
+        ul.order-list
+          li Lorem ipsum lorem ipsum lorem ipsum.
+          li Lorem ipsum lorem ipsum lorem ipsum.
+          li Lorem ipsum lorem ipsum lorem ipsum.
+        p.card-note Lorem ipsum lorem ipsum lorem ipsum.
 
-  hr
-  h2 Add a new task
-  form(method='POST' action='/create')
-    label(for='task') Task:
-    input(type='text', name='task', id='task', required)
-    button(type='submit') Create Task
+    section.tiles
+      h2 Featured treats
+      p.section-lede Lorem ipsum lorem ipsum lorem ipsum.
+      div.tile-grid
+        each item in menuHighlights
+          div.tile
+            h3= item.name
+            p= item.detail
+        a.tile.cta(href='/menu')
+          h3 View the full menu
+          p Lorem ipsum lorem ipsum lorem ipsum.
+
+    section.split
+      div
+        p.kicker Downtown Donuts
+        h2 About our shop
+        p.lede Lorem ipsum lorem ipsum lorem ipsum.
+        div.actions
+          a.button.secondary(href='/about') Learn more
+      div.info-card
+        h3 Visit us
+        ul.bullets
+          li Lorem ipsum lorem ipsum lorem ipsum.
+          li Lorem ipsum lorem ipsum lorem ipsum.
+          li Lorem ipsum lorem ipsum lorem ipsum.
+          li Lorem ipsum lorem ipsum lorem ipsum.
+
+    section.callout
+      h2 Join the community
+      p Lorem ipsum lorem ipsum lorem ipsum.
+      div.actions
+        a.button.primary(href='/comments') Post a message
+        a.button.secondary(href='/menu') View menu
