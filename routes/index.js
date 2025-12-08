@@ -9,27 +9,27 @@ const orderingLinks = [
 
 const menuSections = [
   {
-    title: 'Signature donuts',
+    title: 'Lorem ipsum',
     items: [
-      { name: 'Maple velvet ring', detail: 'Warm maple glaze with brown butter crumble' },
-      { name: 'Downtown classic', detail: 'Vanilla bean glaze with rainbow sprinkles' },
-      { name: 'Cocoa espresso', detail: 'Dark cocoa cake donut with espresso icing' },
+      { name: 'Lorem ipsum', detail: 'Lorem ipsum dolor sit amet' },
+      { name: 'Consectetur elit', detail: 'Sed do eiusmod tempor incididunt' },
+      { name: 'Dolor sit amet', detail: 'Ut labore et dolore magna aliqua' },
     ],
   },
   {
-    title: 'Seasonal picks',
+    title: 'Dolor sit amet',
     items: [
-      { name: 'Cider twist', detail: 'Apple cider dough, cinnamon sugar finish' },
-      { name: 'Berry jam pocket', detail: 'Yeast donut with house-made berry filling' },
-      { name: 'Citrus poppy old fashioned', detail: 'Orange zest glaze and toasted poppy seeds' },
+      { name: 'Lorem ipsum', detail: 'Lorem ipsum dolor sit amet' },
+      { name: 'Consectetur elit', detail: 'Sed do eiusmod tempor incididunt' },
+      { name: 'Dolor sit amet', detail: 'Ut labore et dolore magna aliqua' },
     ],
   },
   {
-    title: 'Coffee & tea',
+    title: 'Consectetur elit',
     items: [
-      { name: 'Downtown drip', detail: 'Single-origin medium roast' },
-      { name: 'Vanilla cold brew', detail: 'Slow-steeped with vanilla bean syrup' },
-      { name: 'Chai latte', detail: 'Spiced black tea with steamed milk' },
+      { name: 'Lorem ipsum', detail: 'Lorem ipsum dolor sit amet' },
+      { name: 'Consectetur elit', detail: 'Sed do eiusmod tempor incididunt' },
+      { name: 'Dolor sit amet', detail: 'Ut labore et dolore magna aliqua' },
     ],
   },
 ];
@@ -53,7 +53,7 @@ router.post('/todos', (req, res) => {
 
 router.get('/', (req, res) => {
   res.render('index', {
-    title: 'Downtown Donuts',
+    title: 'Lorem ipsum',
     orderingLinks,
     menuHighlights: menuSections[0].items,
   });

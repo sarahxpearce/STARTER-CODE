@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Montserrat:wght@400;600;700&display=swap');
+
 :root {
-  --bg: #fdf8f3;
+  --bg: #f7f7f7;
   --card: #ffffff;
-  --text: #2b1a14;
-  --muted: #6f5247;
-  --accent: #d97c5a;
-  --accent-dark: #b55f3f;
-  --tan: #f4e5d6;
+  --text: #000000;
+  --muted: #717c64;
+  --accent: #f7c64a;
+  --accent-dark: #d0a734;
+  --deep: #10291d;
+  --tan: #f7f7f7;
 }
 
 * {
@@ -20,7 +23,7 @@ a {
 }
 
 body {
-  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -32,8 +35,8 @@ body {
 }
 
 .site-header {
-  background: var(--card);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--deep);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -57,8 +60,8 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #f7c8a0, #d97c5a);
-  color: var(--card);
+  background: var(--accent);
+  color: var(--deep);
   display: grid;
   place-items: center;
   font-weight: 700;
@@ -72,18 +75,20 @@ body {
 .brand-text {
   display: grid;
   gap: 0.15rem;
+  color: #f7f7f7;
 }
 
 .brand-overline {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.7rem;
-  color: var(--muted);
+  color: #f7f7f7;
 }
 
 .brand-name {
-  font-weight: 700;
-  color: var(--text);
+  font-family: 'Italianno', cursive;
+  font-size: 1.4rem;
+  color: #f7f7f7;
 }
 
 .nav {
@@ -95,16 +100,17 @@ body {
 .nav a {
   padding: 0.4rem 0.6rem;
   border-radius: 999px;
+  color: #f7f7f7;
 }
 
 .nav a:hover {
-  background: var(--tan);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .order-link {
   padding: 0.55rem 0.9rem;
-  background: var(--text);
-  color: var(--card);
+  background: var(--accent);
+  color: var(--deep);
   border-radius: 10px;
   font-weight: 700;
 }
@@ -160,7 +166,7 @@ main.container {
 
 .button.primary {
   background: var(--accent);
-  color: var(--card);
+  color: var(--deep);
 }
 
 .button.primary:hover {
